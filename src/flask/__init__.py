@@ -3,8 +3,24 @@ from markupsafe import Markup
 from werkzeug.exceptions import abort
 from werkzeug.utils import redirect
 
-from . import json
-from .app import Flask
+'''
+app 总体流程
+blueprints  
+config    配置
+ctx       web会话
+globals   active context 的全局代理对象比如g, session, request等
+helpers   各种工具
+logging   werkzeug 的代理日志
+blinker   基于blinker实现的信号
+templating  基于jinja2的桥接
+views     类似django的基于类的视图
+cli       命令行工具，是在__main__.py 中于__name__ 之下载入
+
+__version__ = ''  挺好玩
+'''
+
+from . import json          # 一个包，调用里面的__init__.py  里面有个__all__ = ['', '']
+from .app import Flask      # 当前目录
 from .app import Request
 from .app import Response
 from .blueprints import Blueprint
